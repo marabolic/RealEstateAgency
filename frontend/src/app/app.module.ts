@@ -11,6 +11,8 @@ import { EmployeeComponent } from './employee/employee.component';
 import { UserComponent } from './user/user.component';
 import { GuestComponent } from './guest/guest.component';
 import { MaterialModule } from './material/material.module';
+import { SearchComponent } from './search/search.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { MaterialModule } from './material/material.module';
     AdminComponent,
     EmployeeComponent,
     UserComponent,
-    GuestComponent
+    GuestComponent,
+    SearchComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
