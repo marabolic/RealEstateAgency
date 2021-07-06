@@ -56,10 +56,17 @@
                 <input matInput>
             </mat-form-field>
 
-           
-            <mat-label>Avatar </mat-label>
-             
-            <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+          
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Avatar </mat-label>
+                <input matInput disabled>
+                <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+            </mat-form-field>
+            
+
+            <div class="example-button-row">
+                <button mat-raised-button color="primary">Register</button>
+            </div>
 
         </table>
     </form>
