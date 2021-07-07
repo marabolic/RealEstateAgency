@@ -15,6 +15,25 @@ export class AdminComponent implements OnInit {
 
   ngOnInit(): void {
     this.requests = [];
+    this.userService.getAllRequests().subscribe((data:User[])=>{
+      this.requests = data;
+    });
+  }
+
+  accept(username){
+    this.userService.updateReqest(username, "1").subscribe((resp)=>{
+      if (resp['message']=='ok'){
+
+      }
+    })
+  }
+
+  reject(username){
+    this.userService.updateReqest(username, "-1").subscribe((resp)=>{
+      if (resp['message']=='ok'){
+        
+      }
+    })
   }
 
 

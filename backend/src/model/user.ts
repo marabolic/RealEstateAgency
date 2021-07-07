@@ -28,7 +28,7 @@ let User = new Schema({
         type: String
     },
     accepted:{
-        type: Number
+        type: String
     },
     type:{
         type: Number

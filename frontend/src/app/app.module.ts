@@ -19,6 +19,7 @@ import { AgentComponent } from './agent/agent.component';
 import { RePageComponent } from './re-page/re-page.component';
 import { ReCardComponent } from './re-card/re-card.component';
 import { PromotedComponent } from './promoted/promoted.component';
+import { UserdataComponent } from './userdata/userdata.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { PromotedComponent } from './promoted/promoted.component';
     RePageComponent,
     ReCardComponent,
     PromotedComponent,
+    UserdataComponent,
 
   ],
   imports: [

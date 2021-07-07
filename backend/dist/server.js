@@ -31,7 +31,6 @@ router.route('/login').post((req, res) => {
     });
 });
 router.route('/register').post((req, res) => {
-    console.log("U backendu");
     //console.log(req.body);
     let u = new user_1.default(req.body);
     u.save().then(u => {
@@ -122,6 +121,31 @@ router.route('/promoted').get((req, res) => {
             console.log(err);
         else
             res.json(realestate);
+    });
+});
+router.route('/regrequest').get((req, res) => {
+    user_1.default.find({ 'accepted': '0' }, (err, user) => {
+        if (err)
+            console.log(err);
+        else
+            res.json(user);
+    });
+});
+router.route('/updateRequest').post((req, res) => {
+    let username = req.body.username;
+    let status = req.body.accepted;
+    user_1.default.findOne({ 'username': username }, (err, user) => {
+        if (err)
+            console.log(err);
+        else {
+            if (user) {
+                user.collection.updateOne({ 'username': username }, { $set: { 'accepted': status } });
+                res.json({ "message": "ok" });
+            }
+            else {
+                res.json({ "message": "user does not exist" });
+            }
+        }
     });
 });
 app.use('/', router);

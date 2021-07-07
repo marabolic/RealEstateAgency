@@ -7,6 +7,6 @@ export class User{
     city: string;
     country: string;
     avatar: string;
-    accepted: number;
+    accepted: string;
     type: number; // 0 - admin, 1 - agent, 2 - user
 }

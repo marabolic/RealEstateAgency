@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
 
   register(){
     this.userService.register(this.firstname, this.lastname, this.username, this.password, 
-      this.email, this.city, this.country, "avatar.jpg", 0, 2).subscribe(ob=>{
+      this.email, this.city, this.country, "avatar.jpg", "0", 2).subscribe(ob=>{
       if(ob['user']=='ok'){
         alert('User added');
       }

@@ -1,7 +1,23 @@
 <div>
     <p>Hello Admin</p>
 
-    <div *ngFor='let req of requests'>
-        
+
+    <div *ngIf='requests.length != 0; else noReqs'>
+        <div *ngFor='let req of requests'>
+            <mat-card>
+                {{req.username}}
+                {{req.email}}
+                <button (click)='accept(req.username)'>Accept</button>
+                <button (click)='reject(req.username)'>Reject</button>
+            </mat-card>
+            <br/>
+        </div>
     </div>
-</div>>
+
+    <ng-template #noReqs>
+        <span>
+           No reqs
+        </span>
+    </ng-template>
+  
+</div>

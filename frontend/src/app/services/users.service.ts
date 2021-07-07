@@ -42,5 +42,18 @@ export class UsersService {
 
     return this.http.post(`${this.uri}/register`, data);
   }
+
+  getAllRequests(){
+    return this.http.get(`${this.uri}/regrequest`);
+  }
+
+
+  updateReqest(username, status){
+    const data = {
+      username: username,
+      accepted: status
+    }
+    return this.http.post(`${this.uri}/updateRequest`, data);
+  }
   
 }
