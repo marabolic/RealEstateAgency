@@ -12,4 +12,22 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  city: string;
+  minimum: string;
+  maximum: string;
+
+  search(){
+    let min=-1, max=-1;
+    if (this.maximum)    {
+      max = Number(this.maximum);
+    }
+    if (this.minimum){
+      min = Number(this.minimum);
+    }
+    if (this.city){
+      
+    }
+
+  }
+
 }

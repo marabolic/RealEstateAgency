@@ -13,6 +13,9 @@ import { GuestComponent } from './guest/guest.component';
 import { MaterialModule } from './material/material.module';
 import { SearchComponent } from './search/search.component';
 import { HeaderComponent } from './header/header.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { AgentComponent } from './agent/agent.component';
 
 @NgModule({
   declarations: [
@@ -24,13 +27,17 @@ import { HeaderComponent } from './header/header.component';
     UserComponent,
     GuestComponent,
     SearchComponent,
-    HeaderComponent
+    HeaderComponent,
+    AgentComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

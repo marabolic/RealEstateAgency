@@ -11,61 +11,61 @@
 
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Name</mat-label>
-                <input matInput placeholder="Ex. Smith">
+                <input matInput [(ngModel)]='firstname' name='firstname' value='Jerry' placeholder="Ex. Jerry">
             </mat-form-field>
         
     
         
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Surname</mat-label>
-                <input matInput placeholder="Ex. Smith">
+                <input matInput [(ngModel)]='lastname' name='lastname' placeholder="Ex. Smith">
             </mat-form-field>
         
 
         
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Username</mat-label>
-                <input matInput placeholder="Ex. jerrysmith">
+                <input matInput [(ngModel)]='username' name='username' placeholder="Ex. jerrysmith">
             </mat-form-field>
         
 
         
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Password</mat-label>
-                <input matInput>
+                <input matInput [(ngModel)]='password' name='password'>
             </mat-form-field>
             
         
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Repeat Password</mat-label>
-                <input matInput>
+                <input matInput [(ngModel)]='rep_password' name='rep_password'>
             </mat-form-field>
         
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Email</mat-label>
-                <input matInput placeholder="Ex. jerry@jerrymail.com">
+                <input matInput [(ngModel)]='email' name='email' placeholder="Ex. jerry@jerrymail.com">
             </mat-form-field>
 
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>City</mat-label>
-                <input matInput>
+                <input matInput [(ngModel)]='city' name='city'>
             </mat-form-field>
 
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Country</mat-label>
-                <input matInput>
+                <input matInput [(ngModel)]='country' name='country'>
             </mat-form-field>
 
           
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Avatar </mat-label>
                 <input matInput disabled>
-                <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+                <input type="file" name="avatar" accept="image/png, image/jpeg">
             </mat-form-field>
             
 
             <div class="example-button-row">
-                <button mat-raised-button color="primary">Register</button>
+                <button mat-raised-button (click)='register()' color="primary">Register</button>
             </div>
 
         </table>
