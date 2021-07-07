@@ -29,6 +29,24 @@ let RealEstate = new Schema({
     },
     promoted:{
         type: String
+    },
+    description : {
+        type: String
+    },
+    address: {
+        type: String
+    },
+    floor: {
+        type: Number
+    },
+    total_floors:{
+        type: Number
+    },
+    furnished: {
+        type: String
+    },
+    owner: {
+        type: String
     }
 });
 

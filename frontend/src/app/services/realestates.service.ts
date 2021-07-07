@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,8 +6,93 @@ import { Injectable } from '@angular/core';
 })
 export class RealestatesService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   uri = 'http://localhost:4000';
   
+  searchMin(min){
+    const data = {
+      minimum : min
+    }
+
+    console.log("U real service min");
+    console.log(data);
+    
+    return this.http.post(`${this.uri}/findmin`, data);
+  }
+
+  searchMax(max){
+    const data = {
+      maximum : max
+    }
+
+    console.log("U users service");
+    console.log(data);
+    
+    return this.http.post(`${this.uri}/findmax`, data);
+  }
+  searchCity(city){
+    const data = {
+      city : city
+    }
+
+    console.log("U users service");
+    console.log(data);
+    
+    return this.http.post(`${this.uri}/findcity`, data);
+  }
+
+  searchMaxCity(max, city){
+    const data = {
+      maximum: max,
+      city: city
+    }
+
+    console.log("U users service");
+    console.log(data);
+    
+    return this.http.post(`${this.uri}/findmaxcity`, data);
+  }
+
+  searchMinCity(min, city){
+    const data = {
+      minimum : min,
+      city: city
+    }
+
+    console.log("U users service");
+    console.log(data);
+    
+    return this.http.post(`${this.uri}/findmincity`, data);
+  }
+
+  searchMinMax(min, max){
+    const data = {
+      minimum : min,
+      maximum: max
+    }
+
+    console.log("U users service");
+    console.log(data);
+    
+    return this.http.post(`${this.uri}/findminmax`, data);
+  }
+
+  searchAll(min, max, city){
+    const data = {
+      minimum : min,
+      maximum: max,
+      city: city
+    }
+
+    console.log("U users service");
+    console.log(data);
+    
+    return this.http.post(`${this.uri}/findallpars`, data);
+  }
+
+  getAllPromoted(){
+    return this.http.get(`${this.uri}/promoted`);
+  }
+
 }

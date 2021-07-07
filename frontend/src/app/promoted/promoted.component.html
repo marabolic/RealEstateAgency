@@ -1,0 +1,14 @@
+<div>
+    <div *ngIf='promoted.length != 0; else noPromoted'>
+        <div *ngFor='let re of promoted'>
+            <app-re-card [re]='re'></app-re-card>
+            <br/>
+        </div>
+    </div>
+
+    <ng-template #noPromoted>
+        <span>
+           
+        </span>
+    </ng-template>
+</div>

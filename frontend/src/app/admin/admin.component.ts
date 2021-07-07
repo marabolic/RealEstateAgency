@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../model/userModel';
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-admin',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UsersService) { }
+
+  requests: User[];
 
   ngOnInit(): void {
+    this.requests = [];
   }
+
+
 
 }

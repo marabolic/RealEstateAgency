@@ -8,6 +8,7 @@ const cors_1 = __importDefault(require("cors"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const user_1 = __importDefault(require("./model/user"));
+const realestate_1 = __importDefault(require("./model/realestate"));
 const app = express_1.default();
 app.use(cors_1.default());
 app.use(body_parser_1.default.json());
@@ -39,12 +40,90 @@ router.route('/register').post((req, res) => {
         res.status(400).json({ 'user': 'no' });
     });
 });
-/*router.route('/realestate').get((req, res)=>{
-    realestate.find({}, (err, realestate)=>{
-        if (err) console.log(err);
-        else res.json(realestate);
-    })
-})*/
+router.route('/findmin').post((req, res) => {
+    let min = req.body.minimum;
+    realestate_1.default.find({ 'price': { $gte: min } }, (err, realestate) => {
+        if (err)
+            console.log(err);
+        else
+            res.json(realestate);
+    });
+});
+router.route('/findmax').post((req, res) => {
+    let max = req.body.maximum;
+    realestate_1.default.find({ 'price': { $lte: max } }, (err, realestate) => {
+        if (err)
+            console.log(err);
+        else
+            res.json(realestate);
+    });
+});
+router.route('/findcity').post((req, res) => {
+    let city = req.body.city;
+    realestate_1.default.find({ 'city': city }, (err, realestate) => {
+        if (err)
+            console.log(err);
+        else
+            res.json(realestate);
+    });
+});
+router.route('/findminmax').post((req, res) => {
+    let min = req.body.minimum;
+    let max = req.body.maximum;
+    realestate_1.default.find({ $and: [{ 'price': { $gte: min } }, { 'price': { $lte: max } }] }, (err, realestate) => {
+        if (err)
+            console.log(err);
+        else
+            res.json(realestate);
+    });
+});
+router.route('/findmincity').post((req, res) => {
+    let min = req.body.minimum;
+    let city = req.body.city;
+    realestate_1.default.find({ 'price': { $gte: min }, 'city': city }, (err, realestate) => {
+        if (err)
+            console.log(err);
+        else
+            res.json(realestate);
+    });
+});
+router.route('/findmaxcity').post((req, res) => {
+    let city = req.body.city;
+    let max = req.body.maximum;
+    realestate_1.default.find({ 'price': { $lte: max }, 'city': city }, (err, realestate) => {
+        if (err)
+            console.log(err);
+        else
+            res.json(realestate);
+    });
+});
+router.route('/findallpars').post((req, res) => {
+    let city = req.body.city;
+    let max = req.body.maximum;
+    let min = req.body.minimum;
+    realestate_1.default.find({ $and: [{ 'price': { $gte: min } }, { 'price': { $lte: max } }], 'city': city }, (err, realestate) => {
+        if (err)
+            console.log(err);
+        else
+            res.json(realestate);
+    });
+});
+router.route('/realestate').get((req, res) => {
+    realestate_1.default.find({}, (err, realestate) => {
+        if (err)
+            console.log(err);
+        else
+            res.json(realestate);
+    });
+});
+router.route('/promoted').get((req, res) => {
+    realestate_1.default.find({ 'promoted': 'yes' }, (err, realestate) => {
+        if (err)
+            console.log(err);
+        else
+            res.json(realestate);
+    });
+});
 app.use('/', router);
 app.listen(4000, () => console.log(`Express server running on port 4000`));
 //# sourceMappingURL=server.js.map

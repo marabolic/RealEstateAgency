@@ -25,9 +25,20 @@
                     <button mat-raised-button (click)='search()' color="primary">Search</button>
                 </div>
 
-                <div>
-                    <mat-card>Simple card</mat-card>
+                <br/>
+
+                <div *ngIf='realestates.length != 0; else noSearchResults'>
+                    <div *ngFor='let re of realestates'>
+                        <app-re-card [re]='re'></app-re-card>
+                        <br/>
+                    </div>
                 </div>
+
+                <ng-template #noSearchResults>
+                    <span>
+                       
+                    </span>
+                </ng-template>
                 
 
         </table>

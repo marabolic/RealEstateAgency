@@ -16,6 +16,9 @@ import { HeaderComponent } from './header/header.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AgentComponent } from './agent/agent.component';
+import { RePageComponent } from './re-page/re-page.component';
+import { ReCardComponent } from './re-card/re-card.component';
+import { PromotedComponent } from './promoted/promoted.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,9 @@ import { AgentComponent } from './agent/agent.component';
     SearchComponent,
     HeaderComponent,
     AgentComponent,
+    RePageComponent,
+    ReCardComponent,
+    PromotedComponent,
 
   ],
   imports: [
