@@ -110,4 +110,30 @@ export class RealestatesService {
     return this.http.get(`${this.uri}/rent`);
   }
 
+  addNewRealEstate(region, city, price, house_flat, rooms, area, sell_rent, promoted, description, 
+              address, floor, total_floors, furnished, owner, sold, rented ){
+
+    const data = {
+      region : region,
+      city : city,
+      price : price,
+      house_flat: house_flat,
+      rooms: rooms,
+      area: area,
+      sell_rent:sell_rent,
+      promoted:promoted,
+      description: description,
+      address:address,
+      floor:floor,
+      total_floors:total_floors,
+      furnished:furnished,
+      owner: owner,
+      sold:sold,
+      rented:rented
+    }
+
+
+    return this.http.post(`${this.uri}/newRe`, data);
+  }
+
 }

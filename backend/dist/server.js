@@ -21,7 +21,6 @@ const router = express_1.default.Router();
 router.route('/login').post((req, res) => {
     let username = req.body.username;
     let password = req.body.password;
-    console.log(username);
     user_1.default.findOne({ 'username': username, 'password': password }, (err, user) => {
         if (err)
             console.log(err);
@@ -146,6 +145,49 @@ router.route('/updateRequest').post((req, res) => {
                 res.json({ "message": "user does not exist" });
             }
         }
+    });
+});
+router.route('/rent').post((req, res) => {
+    let id = req.body.id;
+    let datefrom = req.body.datefrom;
+    let dateto = req.body.dateto;
+    user_1.default.findOne({ '_id': id }, (err, user) => {
+        if (err)
+            console.log(err);
+        else {
+            if (user) {
+                user.collection.updateOne({ '_id': id }, { $push: { 'sold': "yes" } });
+                res.json({ "message": "ok" });
+            }
+            else {
+                res.json({ "message": "user does not exist" });
+            }
+        }
+    });
+});
+router.route('/buy').post((req, res) => {
+    let id = req.body.id;
+    user_1.default.findOne({ '_id': id }, (err, user) => {
+        if (err)
+            console.log(err);
+        else {
+            if (user) {
+                user.collection.updateOne({ '_id': id }, { $set: { 'sold': "yes" } });
+                res.json({ "message": "ok" });
+            }
+            else {
+                res.json({ "message": "user does not exist" });
+            }
+        }
+    });
+});
+router.route('/newRe').post((req, res) => {
+    //console.log(req.body);
+    let u = new realestate_1.default(req.body);
+    u.save().then(u => {
+        res.status(200).json({ 'realestate': 'ok' });
+    }).catch(err => {
+        res.status(400).json({ 'realestate': 'no' });
     });
 });
 app.use('/', router);

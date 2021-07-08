@@ -26,7 +26,7 @@ router.route('/login').post((req, res)=>{
     let username = req.body.username;
     let password = req.body.password;
 
-    console.log(username);
+    
 
     user.findOne({'username':username, 'password':password}, (err, user)=>{
         if (err) console.log(err);
@@ -182,6 +182,18 @@ router.route('/buy').post((req, res)=>{
                 res.json({"message" : "user does not exist"});
             }
         }
+    })
+});
+
+
+router.route('/newRe').post((req, res)=>{
+    //console.log(req.body);
+    let u = new realestate(req.body);
+    u.save().then(u=>{
+        res.status(200).json({'realestate':'ok'});
+
+    }).catch(err=>{
+        res.status(400).json({'realestate':'no'});
     })
 });
 

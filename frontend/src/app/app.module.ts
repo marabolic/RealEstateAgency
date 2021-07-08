@@ -21,6 +21,7 @@ import { ReCardComponent } from './re-card/re-card.component';
 import { PromotedComponent } from './promoted/promoted.component';
 import { UserdataComponent } from './userdata/userdata.component';
 import { LogoutComponent } from './logout/logout.component';
+import { NewReComponent } from './new-re/new-re.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { LogoutComponent } from './logout/logout.component';
     PromotedComponent,
     UserdataComponent,
     LogoutComponent,
+    NewReComponent,
 
   ],
   imports: [
