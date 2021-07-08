@@ -4,6 +4,8 @@ import { AdminComponent } from './admin/admin.component';
 import { AgentComponent } from './agent/agent.component';
 import { GuestComponent } from './guest/guest.component';
 import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
+import { RePageComponent } from './re-page/re-page.component';
 import { RegisterComponent } from './register/register.component';
 import { UserComponent } from './user/user.component';
 
@@ -15,6 +17,8 @@ const routes: Routes = [
   {path: "admin", component: AdminComponent},
   {path: "agent", component: AgentComponent},
   {path: "user", component: UserComponent},
+  {path: "logout", component: LogoutComponent},
+  {path: "re_page", component: RePageComponent}
 ];
 
 @NgModule({

@@ -1,4 +1,5 @@
 <div>
+    <b>Promoted</b>
     <div *ngIf='promoted.length != 0; else noPromoted'>
         <div *ngFor='let re of promoted'>
             <app-re-card [re]='re'></app-re-card>

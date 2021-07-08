@@ -16,7 +16,7 @@ export class UsersService {
       password : password
     }
 
-    console.log("U users service");
+    console.log("Login user service");
     console.log(data);
     
     return this.http.post(`${this.uri}/login`, data);

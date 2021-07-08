@@ -1,4 +1,5 @@
 export class RealEstate{
+    _id : string;
     photos : Array<string>;
     region : string;
     city : string;

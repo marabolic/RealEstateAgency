@@ -20,6 +20,7 @@ import { RePageComponent } from './re-page/re-page.component';
 import { ReCardComponent } from './re-card/re-card.component';
 import { PromotedComponent } from './promoted/promoted.component';
 import { UserdataComponent } from './userdata/userdata.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { UserdataComponent } from './userdata/userdata.component';
     ReCardComponent,
     PromotedComponent,
     UserdataComponent,
+    LogoutComponent,
 
   ],
   imports: [

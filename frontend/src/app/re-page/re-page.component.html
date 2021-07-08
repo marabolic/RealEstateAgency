@@ -1,3 +1,106 @@
 <div>
+
+    <mat-card class='card'>
+        <table>
+            <tr>
+                <td>Price: </td>
+                <td>{{estate.price}}$</td>
+            </tr>
+            <tr>
+                <td>Region: </td>
+                <td>{{estate.region}}</td>
+            </tr>
+            <tr>
+                <td>City: </td>
+                <td>{{estate.city}}</td>
+            </tr>
+            <tr>
+                <td>House/Flat: </td>
+                <td>{{estate.house_flat}}</td>
+            </tr>
+            <tr>
+                <td>Rooms: </td>
+                <td>{{estate.rooms}}</td>
+            </tr>
+            <tr>
+                <td>Area: </td>
+                <td>{{estate.area}}</td>
+            </tr>
+            <tr>
+                <td>Rent/Sale: </td>
+                <td>{{estate.sell_rent}}</td>
+            </tr>
+            <tr>
+                <td>Description: </td>
+                <td>{{estate.description}}</td>
+            </tr>
+            <tr>
+                <td>Floor: </td>
+                <td>{{estate.floor}}</td>
+            </tr>
+            <tr>
+                <td>Total floors: </td>
+                <td>{{estate.total_floors}}</td>
+            </tr>
+        </table>
+    </mat-card>
+
+    <br/>
+    <br/>
+
+    <form class="example-form" *ngIf="estate.sell_rent === 'rent'; else sell">
+            <br/>
+            <b>Rent</b>
+            <br/>
+            <br/>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Date from </mat-label>
+                <input matInput type='date' name="datefrom">    
+            </mat-form-field>
+
+            <br/>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Date to</mat-label>
+                <input matInput type='date' name="datefrom">
+            </mat-form-field>
+
+            <br/>
+            <div class="example-button-row">
+                <button mat-raised-button (click)='rent()' color="primary">Rent</button>
+            </div>
+
+    </form>
+
+    <ng-template #sell>
+        <br/>
+        <b>Sell</b>
+        <br/>
+        <br/>
+        <span>
+            <mat-form-field appearance="fill">
+                <mat-label>Method of payment</mat-label>
+                <mat-select [(value)]="selected">
+                    <mat-option value="cash">Cash</mat-option>
+                    <mat-option value="credit">Credit</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </span>
+        <div *ngIf="selected === 'credit'">
+         
+            <mat-card>
+                <mat-label>
+                    Credit deposit: {{creditprice}}$
+                </mat-label>
+            </mat-card>
+               
+        </div>
+        
+        <br/>
+
+        <div class="example-button-row">
+            <button mat-raised-button (click)='buy(estate._id)' color="primary">Buy</button>
+        </div>
+    </ng-template>
+   
     
 </div>

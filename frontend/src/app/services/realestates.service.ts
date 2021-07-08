@@ -95,4 +95,19 @@ export class RealestatesService {
     return this.http.get(`${this.uri}/promoted`);
   }
 
+  buyRealEstate(id){
+    const data = {
+      id : id
+    }
+    return this.http.get(`${this.uri}/buy`);
+  }
+
+  rentRealEstate(id){
+
+    const data = {
+      id : id
+    }
+    return this.http.get(`${this.uri}/rent`);
+  }
+
 }

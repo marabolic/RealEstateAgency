@@ -22,11 +22,17 @@ export class LoginComponent implements OnInit {
     this.userService.login(this.username, this.password).subscribe((user:User)=>{
       console.log("here");
       if (user){
-        localStorage.setItem('user', user.username);
-        if (user.type == 2) this.router.navigate(['/user']);
+        if (user.accepted == '1'){
+          
+          localStorage.setItem('user', JSON.stringify(user));
+          if (user.type == 2) this.router.navigate(['/user']);
+          else{
+            if (user.type == 1) this.router.navigate(['/agent']);
+            else this.router.navigate(['/admin']);
+          }
+        }
         else{
-          if (user.type == 1) this.router.navigate(['/agent']);
-          else this.router.navigate(['/admin']);
+          alert("User not accepted");
         }
       }
       else{

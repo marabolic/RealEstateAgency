@@ -1,8 +1,12 @@
 <div>
-    <mat-card class='card'>
+    <mat-card class='card' >
         Price: {{re.price}}
         <br/>
         City: {{re.city}}
-
+        <br/>
+        <div *ngIf='user != null'>
+            <button mat-raised-button (click)="showPage()" color="primary">Page</button>
+        </div>
+       
     </mat-card>
 </div>

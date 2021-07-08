@@ -148,7 +148,47 @@ router.route('/updateRequest').post((req, res)=>{
             }
         }
     })
-})
+});
+
+
+router.route('/rent').post((req, res)=>{
+    let id = req.body.id;
+    let datefrom = req.body.datefrom;
+    let dateto = req.body.dateto;
+    user.findOne({'_id': id}, (err, user)=>{
+        if (err) console.log(err);
+        else{
+            if (user){
+                user.collection.updateOne({'_id': id}, {$push: {'sold' : "yes"}});
+                res.json({"message" : "ok"});
+            }
+            else{
+                res.json({"message" : "user does not exist"});
+            }
+        }
+    })
+});
+
+router.route('/buy').post((req, res)=>{
+    let id = req.body.id;
+    user.findOne({'_id': id}, (err, user)=>{
+        if (err) console.log(err);
+        else{
+            if (user){
+                user.collection.updateOne({'_id': id}, {$set: {'sold' : "yes"}});
+                res.json({"message" : "ok"});
+            }
+            else{
+                res.json({"message" : "user does not exist"});
+            }
+        }
+    })
+});
+
+
+
+
+
 
 
 app.use('/', router);
