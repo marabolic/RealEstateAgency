@@ -1,0 +1,37 @@
+<div>
+    <mat-card class='card'>
+        <table>
+            <tr>
+                <td>
+                    <img class='avatar' src="{{'../../assets/'+user.avatar}}" alt="">
+                </td>
+            </tr>
+            <tr>
+                <td>Name: </td>
+                <td>{{user.firstname}}</td>
+            </tr>
+            <tr>
+                <td>Surname: </td>
+                <td>{{user.lastname}}</td>
+            </tr>
+            <tr>
+                <td>Username: </td>
+                <td>{{user.username}}</td>
+            </tr>
+            <tr>
+                <td>Email: </td>
+                <td>{{user.email}}</td>
+            </tr>
+            <tr>
+                <td>City: </td>
+                <td>{{user.city}}</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <a mat-raised-button routerLink="passChange" color='primary'>Change Password</a>
+            </tr>
+        </table>
+    </mat-card>
+
+</div>

@@ -30,9 +30,16 @@ export class NewReComponent implements OnInit {
 
   publish(){
     let user = JSON.parse(localStorage.getItem("user"));
+    let username;
+    if(user.type == 2){
+      username = user.username;
+    }
+    else {
+      username = 'agency';
+    }
     this.reService.addNewRealEstate(this.region, this.city, this.price, this.house_flat,this.rooms,
        this.area, this.sell_rent,"no", this.description, this.address, this.floor, this.total_floors, this.furnished,
-       user.username, "no", []).subscribe((ob)=>{
+       username, "no", []).subscribe((ob)=>{
         if(ob['realestate']=='ok'){
           alert('User added');
         }

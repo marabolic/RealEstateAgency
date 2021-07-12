@@ -22,6 +22,8 @@ import { PromotedComponent } from './promoted/promoted.component';
 import { UserdataComponent } from './userdata/userdata.component';
 import { LogoutComponent } from './logout/logout.component';
 import { NewReComponent } from './new-re/new-re.component';
+import { ProfileComponent } from './profile/profile.component';
+import { PasswordChangeComponent } from './password-change/password-change.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { NewReComponent } from './new-re/new-re.component';
     UserdataComponent,
     LogoutComponent,
     NewReComponent,
+    ProfileComponent,
+    PasswordChangeComponent,
 
   ],
   imports: [

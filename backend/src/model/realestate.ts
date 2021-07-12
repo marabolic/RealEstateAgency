@@ -47,6 +47,9 @@ let RealEstate = new Schema({
     },
     owner: {
         type: String
+    },
+    accepted:{
+        type: Number
     }
 });
 

@@ -15,4 +15,5 @@ export class RealEstate{
     total_floors: number;
     furnished: string;
     owner: string;
+    accepted: number;
 }

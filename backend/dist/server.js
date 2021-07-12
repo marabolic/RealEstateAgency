@@ -147,6 +147,23 @@ router.route('/updateRequest').post((req, res) => {
         }
     });
 });
+router.route('/changePassword').post((req, res) => {
+    let username = req.body.username;
+    let password = req.body.password;
+    user_1.default.findOne({ 'username': username }, (err, user) => {
+        if (err)
+            console.log(err);
+        else {
+            if (user) {
+                user.collection.updateOne({ 'username': username }, { $set: { 'password': password } });
+                res.json({ "message": "ok" });
+            }
+            else {
+                res.json({ "message": "user does not exist" });
+            }
+        }
+    });
+});
 router.route('/rent').post((req, res) => {
     let id = req.body.id;
     let datefrom = req.body.datefrom;
