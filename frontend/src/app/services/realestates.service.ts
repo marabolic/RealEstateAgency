@@ -95,6 +95,15 @@ export class RealestatesService {
     return this.http.get(`${this.uri}/promoted`);
   }
 
+
+  setPromoted(id, promoted){
+    const data = {
+      id : id,
+      promoted: promoted
+    }
+    return this.http.post(`${this.uri}/setPromoted`, data);
+  }
+
   buyRealEstate(id){
     const data = {
       id : id
@@ -141,12 +150,23 @@ export class RealestatesService {
     return this.http.get(`${this.uri}/realestateRequest`);
   }
 
+  getAllRealestates(){
+    return this.http.get(`${this.uri}/getAllRealestates`);
+  }
 
   acceptRealEstate(id){
     const data = {
       id : id
     }
     return this.http.post(`${this.uri}/updateRealestateRequest`, data);
+  }
+
+  getRealEstateByUsername(username){
+    const data = {
+      username : username
+    }
+    
+    return this.http.post(`${this.uri}/getRealEstateByUsername`, data);
   }
 
 }

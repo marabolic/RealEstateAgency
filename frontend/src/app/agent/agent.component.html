@@ -1,7 +1,7 @@
 <div>
     <p>Hello {{user.username}}</p>
 
-
+    <h2>Not accepted</h2>
     <div *ngIf='requests.length != 0; else noReqs'>
         <div *ngFor='let req of requests'>
             <mat-card>
@@ -20,4 +20,28 @@
         </span>
     </ng-template>
   
+
+    <app-new-re></app-new-re>
+
+    <h2>All real estates</h2>
+    <div *ngIf='all.length != 0; else noRe'>
+        <div *ngFor='let re of all'>
+            <mat-card *ngIf='re.accepted == 1'>
+                {{re.owner}} |
+                {{re.price}} |
+                {{re.address}} |
+                promoted: {{re.promoted}}
+                <button (click)='promote(re._id)'>Promote</button>
+                <button (click)='unpromote(re._id)'>Unpromote</button>
+            </mat-card>
+            <br/>
+        </div>
+    </div>
+
+    <ng-template #noRe>
+        <span>
+           No real estates
+        </span>
+    </ng-template>
+
 </div>

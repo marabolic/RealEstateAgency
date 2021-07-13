@@ -1,0 +1,23 @@
+<div>
+    <br/>
+    <hr/>
+    <br/>
+    My real estates
+    <div *ngIf='myrealestates.length != 0; else noRes'>
+        <div *ngFor='let re of myrealestates'>
+            <mat-card>
+                {{re.price}}
+                {{re.address}}
+                <button (click)='change(re._id)'>Change</button>
+            </mat-card>
+            <br/>
+        </div>
+    </div>
+
+    <ng-template #noRes>
+        <span>
+           No reqs
+        </span>
+    </ng-template>
+    
+</div>

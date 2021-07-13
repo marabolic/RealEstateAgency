@@ -1,14 +1,19 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import { EventEmitter } from '@angular/core';
+import { User } from '../model/userModel';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.loggedOut$ = new EventEmitter();
+   }
 
   uri = 'http://localhost:4000';
+  public loggedOut$: EventEmitter<User>;
 
   login(username, password){
     const data = {
@@ -41,6 +46,12 @@ export class UsersService {
     console.log(data);
 
     return this.http.post(`${this.uri}/register`, data);
+  }
+
+  logout(){
+    let user = JSON.parse(localStorage.getItem("user"));
+    localStorage.clear();
+    this.loggedOut$.emit(user);
   }
 
   getAllRequests(){

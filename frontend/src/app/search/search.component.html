@@ -3,6 +3,7 @@
     <form class='example-form'>
         <table>
                 <br/>
+                <hr/>
                 <b>Search</b>
                 <br/>
                 <br/>
@@ -13,12 +14,12 @@
 
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Minimum price</mat-label>
-                    <input matInput [(ngModel)]='minimum' name='minimum'>
+                    <input matInput type='number' [(ngModel)]='minimum' name='minimum'>
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Maximum price</mat-label>
-                    <input matInput [(ngModel)]='maximum' name='maximum'>
+                    <input matInput type='number' [(ngModel)]='maximum' name='maximum'>
                 </mat-form-field>
 
                 <div class="example-button-row">
@@ -29,7 +30,7 @@
 
                 <div *ngIf='realestates.length != 0; else noSearchResults'>
                     <div *ngFor='let re of realestates'>
-                        <app-re-card [re]='re'></app-re-card>
+                        <app-re-card *ngIf='re.accepted == 1' [re]='re'></app-re-card>
                         <br/>
                     </div>
                 </div>

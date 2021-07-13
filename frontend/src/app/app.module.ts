@@ -24,6 +24,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { NewReComponent } from './new-re/new-re.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PasswordChangeComponent } from './password-change/password-change.component';
+import { ResForUserComponent } from './res-for-user/res-for-user.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { PasswordChangeComponent } from './password-change/password-change.compo
     NewReComponent,
     ProfileComponent,
     PasswordChangeComponent,
+    ResForUserComponent,
 
   ],
   imports: [

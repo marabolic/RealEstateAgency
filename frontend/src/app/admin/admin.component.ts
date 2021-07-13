@@ -12,6 +12,7 @@ export class AdminComponent implements OnInit {
   constructor(private userService: UsersService) { }
 
   requests: User[];
+  all: User[];
 
   ngOnInit(): void {
     this.requests = [];
@@ -38,6 +39,14 @@ export class AdminComponent implements OnInit {
         });
       }
     })
+  }
+
+  update(){
+
+  }
+
+  delete(){
+    
   }
 
 

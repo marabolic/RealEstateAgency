@@ -1,5 +1,7 @@
 <div>
     <mat-card class='card' >
+        Description: {{re.description}}
+        <br/>
         Price: {{re.price}}
         <br/>
         City: {{re.city}}
@@ -13,6 +15,16 @@
         Area: {{re.area}}
         <br/>
         Sell/Rent: {{re.sell_rent}}
+        <br/>
+        Furnished: {{re.furnished}}
+        <br/>
+        Floor: {{re.furnished}}
+        <br/>
+        Total floors: {{re.total_floors}}
+        <br/>
+        Owner: {{re.owner}}
+
+        <br/>
         
         <div *ngIf='user != null'>
             <button mat-raised-button (click)="showPage()" color="primary">Page</button>

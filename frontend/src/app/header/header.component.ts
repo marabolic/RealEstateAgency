@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../model/userModel';
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,7 @@ import { User } from '../model/userModel';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private userService: UsersService) { }
 
   user : User;
 
@@ -21,8 +22,10 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(){
-    localStorage.clear();
-    this.router.navigate(['']);
+    this.userService.logout();
+    this.user = null;
+    this.router.navigate(['/']);
+
   }
 
 }

@@ -48,6 +48,12 @@ let RealEstate = new Schema({
     owner: {
         type: String
     },
+    sold:{
+        type: String
+    },
+    rented:{
+        type: Array
+    },
     accepted:{
         type: Number
     }

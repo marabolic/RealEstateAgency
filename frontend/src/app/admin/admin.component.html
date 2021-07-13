@@ -19,5 +19,27 @@
            No reqs
         </span>
     </ng-template>
+
+    <br/>
+    <hr/>
+    <br/>
+    <app-register></app-register>
+
+    <br/>
+    <hr/>
+    <br/>
+    All users
+    <div *ngIf='all.length != 0; else noUsers'>
+        <div *ngFor='let usr of all'>
+            <mat-card>
+                {{usr.username}}
+                {{usr.email}}
+                <button (click)='update(usr.username)'>Update</button>
+                <button (click)='delete(usr.username)'>Delete</button>
+            </mat-card>
+            <br/>
+        </div>
+    </div>
+
   
 </div>
