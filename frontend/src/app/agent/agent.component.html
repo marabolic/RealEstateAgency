@@ -1,1 +1,23 @@
-<p>agent works!</p>
+<div>
+    <p>Hello {{user.username}}</p>
+
+
+    <div *ngIf='requests.length != 0; else noReqs'>
+        <div *ngFor='let req of requests'>
+            <mat-card>
+                {{req.owner}}
+                {{req.price}}
+                {{req.address}}
+                <button (click)='accept(req._id)'>Accept</button>
+            </mat-card>
+            <br/>
+        </div>
+    </div>
+
+    <ng-template #noReqs>
+        <span>
+           No reqs
+        </span>
+    </ng-template>
+  
+</div>

@@ -25,11 +25,8 @@ export class LoginComponent implements OnInit {
         if (user.accepted == '1'){
           
           localStorage.setItem('user', JSON.stringify(user));
-          if (user.type == 2) this.router.navigate(['/user']);
-          else{
-            if (user.type == 1) this.router.navigate(['/agent']);
-            else this.router.navigate(['/admin']);
-          }
+          this.router.navigate(['']);
+          
         }
         else{
           alert("User not accepted");

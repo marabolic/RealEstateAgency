@@ -68,7 +68,7 @@
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label class='uploadimg'>Avatar </mat-label>
                 <input matInput disabled>
-                <input type="file" [(ngModel)]='avatar' name="avatar" (change)="onFileSelected($event)" accept="image/png, image/jpeg">
+                <input type="file" name="avatar" (change)="onFileSelected($event)" accept="image/png, image/jpeg">
             </mat-form-field>
             
 
@@ -76,6 +76,7 @@
                 <button mat-raised-button (click)='register()' color="primary">Register</button>
             </div>
 
+            {{message}}
         </table>
     </form>
 

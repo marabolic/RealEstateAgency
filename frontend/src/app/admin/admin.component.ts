@@ -23,7 +23,9 @@ export class AdminComponent implements OnInit {
   accept(username){
     this.userService.updateReqest(username, "1").subscribe((resp)=>{
       if (resp['message']=='ok'){
-
+        this.userService.getAllRequests().subscribe((data:User[])=>{
+          this.requests = data;
+        });
       }
     })
   }
@@ -31,7 +33,9 @@ export class AdminComponent implements OnInit {
   reject(username){
     this.userService.updateReqest(username, "-1").subscribe((resp)=>{
       if (resp['message']=='ok'){
-        
+        this.userService.getAllRequests().subscribe((data:User[])=>{
+          this.requests = data;
+        });
       }
     })
   }

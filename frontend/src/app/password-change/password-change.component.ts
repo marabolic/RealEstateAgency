@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from '../model/userModel';
 import { UsersService } from '../services/users.service';
 
@@ -9,7 +10,7 @@ import { UsersService } from '../services/users.service';
 })
 export class PasswordChangeComponent implements OnInit {
 
-  constructor(private userService: UsersService) { }
+  constructor(private userService: UsersService, private router: Router) { }
 
   old_password: string;
   new_password: string;
@@ -76,9 +77,8 @@ export class PasswordChangeComponent implements OnInit {
 
     this.userService.changePassword(this.user.username, this.new_password).subscribe((ob)=>{
       if(ob['message']=='ok'){
-        this.user.password = this.new_password;
-        localStorage.setItem("user", JSON.stringify(this.user));
-        alert('Password changed');
+        localStorage.clear();
+        this.router.navigate(['']);
       }
     })
     

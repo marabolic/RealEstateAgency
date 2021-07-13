@@ -111,7 +111,7 @@ export class RealestatesService {
   }
 
   addNewRealEstate(region, city, price, house_flat, rooms, area, sell_rent, promoted, description, 
-              address, floor, total_floors, furnished, owner, sold, rented ){
+              address, floor, total_floors, furnished, owner, sold, rented, accepted){
 
     const data = {
       region : region,
@@ -129,11 +129,24 @@ export class RealestatesService {
       furnished:furnished,
       owner: owner,
       sold:sold,
-      rented:rented
+      rented:rented,
+      accepted: accepted
     }
 
 
     return this.http.post(`${this.uri}/newRe`, data);
+  }
+
+  getAllRequests(){
+    return this.http.get(`${this.uri}/realestateRequest`);
+  }
+
+
+  acceptRealEstate(id){
+    const data = {
+      id : id
+    }
+    return this.http.post(`${this.uri}/updateRealestateRequest`, data);
   }
 
 }

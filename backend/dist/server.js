@@ -130,7 +130,23 @@ router.route('/regrequest').get((req, res) => {
             res.json(user);
     });
 });
-router.route('/updateRequest').post((req, res) => {
+router.route('/realestateRequest').get((req, res) => {
+    realestate_1.default.find({ 'accepted': '0' }, (err, re) => {
+        if (err)
+            console.log(err);
+        else
+            res.json(re);
+    });
+});
+router.route('/allusers').get((req, res) => {
+    user_1.default.find({}, (err, re) => {
+        if (err)
+            console.log(err);
+        else
+            res.json(re);
+    });
+});
+router.route('/updateUserRequest').post((req, res) => {
     let username = req.body.username;
     let status = req.body.accepted;
     user_1.default.findOne({ 'username': username }, (err, user) => {
@@ -140,6 +156,28 @@ router.route('/updateRequest').post((req, res) => {
             if (user) {
                 user.collection.updateOne({ 'username': username }, { $set: { 'accepted': status } });
                 res.json({ "message": "ok" });
+            }
+            else {
+                res.json({ "message": "user does not exist" });
+            }
+        }
+    });
+});
+router.route('/updateRealestateRequest').post((req, res) => {
+    let id = req.body.id;
+    realestate_1.default.findById(id, (err, re) => {
+        if (err)
+            console.log(err);
+        else {
+            if (re) {
+                console.log(re);
+                re.accepted = 1;
+                re.save().then(() => {
+                    res.json({ "message": "ok" });
+                }).catch((err) => {
+                    res.json({ "message": "database error" });
+                });
+                //realestate.collection.updateOne({'username': username}, {$set: {'accepted' : status}});
             }
             else {
                 res.json({ "message": "user does not exist" });

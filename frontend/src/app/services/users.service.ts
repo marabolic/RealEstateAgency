@@ -47,13 +47,16 @@ export class UsersService {
     return this.http.get(`${this.uri}/regrequest`);
   }
 
+  getAllUsers(){
+    return this.http.get(`${this.uri}/allusers`);
+  }
 
   updateReqest(username, status){
     const data = {
       username: username,
       accepted: status
     }
-    return this.http.post(`${this.uri}/updateRequest`, data);
+    return this.http.post(`${this.uri}/updateUserRequest`, data);
   }
 
 

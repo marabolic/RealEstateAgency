@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { User } from '../model/userModel';
 import { UsersService } from '../services/users.service';
 
 
@@ -9,7 +11,7 @@ import { UsersService } from '../services/users.service';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private userService: UsersService) { }
+  constructor(private userService: UsersService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -45,27 +47,64 @@ export class RegisterComponent implements OnInit {
         return;
       }
 
+    
+    this.userService.getAllUsers().subscribe((users:User[])=>{
+      let found = 0;
+      users.forEach((user)=>{
+        if (user.username == this.username){
+          this.message = "Username already taken";
+          found = 1;
+          return;
+        }
+      })
+      if (found == 1)
+        return;
+    })
 
     var regularExpression = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,24}$/;
     if(!regularExpression.test(this.password)) {
       this.message = "Password should contain atleast one number and one special character";
       return;
     }
-    console.log(this.avatar.name);
+
+    if (this.password != this.rep_password){
+      this.message = "Passwords don't match";
+      return;
+    }
+    
+    
+    this.userService.getAllUsers().subscribe((users:User[])=>{
+      let found = 0;
+      users.forEach((user)=>{
+        if (user.email == this.email){
+          this.message = "Email already exists";
+          found = 1;
+          return;
+        }
+      })
+      if (found == 1)
+        return;
+    })
+
     let avatar;
     
     if (this.avatar != undefined){
-      let splitted =  this.avatar.toString().split("\\");
-      avatar = splitted[2];
+     
+      avatar = this.avatar.name;
+     
     }
     else{
       avatar = 'avatar.png';
     }
+
+   
+    
     
     this.userService.register(this.firstname, this.lastname, this.username, this.password, 
       this.email, this.city, this.country, avatar, "0", type).subscribe(ob=>{
       if(ob['user']=='ok'){
         alert('User added');
+        this.router.navigate(['login']);
       }
     })
   }
@@ -73,6 +112,7 @@ export class RegisterComponent implements OnInit {
 
   onFileSelected(event) {
     console.log(event.target.files);
-    this.avatar = event.target.files; 
+    this.avatar = event.target.files[0]; 
+    console.log(this.avatar);
   }
 }

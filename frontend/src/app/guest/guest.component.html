@@ -1,5 +1,24 @@
 
 <div class='body'>
-    <app-promoted></app-promoted>
-    <app-search></app-search>
+    <div *ngIf='user == undefined; else userType'>
+        <app-promoted></app-promoted>
+        <app-search></app-search>
+    </div>
+
+    <ng-template #userType>
+        <div *ngIf='user.type == 2; else agent'>
+            <app-user></app-user>
+        </div>
+        <ng-template #agent>
+            <div *ngIf='user.type == 1; else admin'>
+                <app-agent></app-agent>
+            </div>
+            <ng-template #admin>
+                <div>
+                    <app-admin></app-admin>
+                </div>
+            </ng-template>
+        </ng-template>        
+    </ng-template>
+    
 </div>
