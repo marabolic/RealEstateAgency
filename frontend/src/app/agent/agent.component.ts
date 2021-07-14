@@ -127,7 +127,7 @@ export class AgentComponent implements OnInit, AfterViewInit{
 
 
     })
-    //u subscribe
+   
     
   }
 

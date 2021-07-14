@@ -28,6 +28,7 @@ import { ResForUserComponent } from './res-for-user/res-for-user.component';
 import { UserModifyComponent } from './user-modify/user-modify.component';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
 import { PromotedCardComponent } from './promoted-card/promoted-card.component';
+import { AllReComponent } from './all-re/all-re.component';
 
 
 
@@ -55,6 +56,7 @@ import { PromotedCardComponent } from './promoted-card/promoted-card.component';
     ResForUserComponent,
     UserModifyComponent,
     PromotedCardComponent,
+    AllReComponent,
 
   ],
   imports: [

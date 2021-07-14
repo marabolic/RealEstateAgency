@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './admin/admin.component';
 import { AgentComponent } from './agent/agent.component';
+import { AllReComponent } from './all-re/all-re.component';
 import { GuestComponent } from './guest/guest.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
@@ -27,7 +28,7 @@ const routes: Routes = [
   {path: "new-re", component: NewReComponent},
   {path: "user-modify", component: UserModifyComponent},
   {path: "my-real-estates", component: ResForUserComponent},
-  {path: "promote", component: PromotedComponent}
+  {path: "all-re", component: AllReComponent}
 ];
 
 @NgModule({

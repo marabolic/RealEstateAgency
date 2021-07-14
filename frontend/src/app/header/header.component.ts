@@ -49,6 +49,6 @@ export class HeaderComponent implements OnInit {
   }
 
   promote(){
-    this.router.navigate(['promote']);
+    this.router.navigate(['all-re']);
   }
 }

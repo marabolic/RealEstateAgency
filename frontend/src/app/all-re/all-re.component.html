@@ -1,0 +1,25 @@
+<h2>All real estates</h2>
+<div *ngIf='all.length != 0; else noRe'>
+    <div *ngFor='let re of all'>
+        <mat-card *ngIf='re.accepted == 1'>
+            {{re.owner}} |
+            {{re.price}} |
+            {{re.address}} |
+            promoted: {{re.promoted}}
+            <span class="example-button-row">
+                <button mat-raised-button (click)='promote(req._id)' color="primary">Promote</button>
+            </span> 
+            <span>&nbsp;</span>
+            <span class="example-button-row">
+                <button mat-raised-button (click)='unpromote(req._id)' color="primary">Unpromote</button>
+            </span>
+        </mat-card>
+        <br/>
+    </div>
+</div>
+
+<ng-template #noRe>
+    <span>
+        No real estates
+    </span>
+</ng-template>

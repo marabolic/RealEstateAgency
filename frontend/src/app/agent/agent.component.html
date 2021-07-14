@@ -1,55 +1,37 @@
 <div *ngIf='user && user.type == 1'>
     <p>Hello {{user.username}}</p>
 
-    <h2>Not accepted</h2>
-    <div *ngIf='requests.length != 0; else noReqs'>
-        <div *ngFor='let req of requests'>
-            <mat-card>
-                {{req.owner}} |
-                {{req.price}} | 
-                {{req.address}} |
-                <span class="example-button-row">
-                    <button mat-raised-button (click)='accept(req._id)' color="primary">Accept</button>
-                </span>
-            </mat-card>
-            <br/>
+    <div class='example-form'>
+
+        <h2>Not accepted</h2>
+        <div *ngIf='requests.length != 0; else noReqs'>
+            <div *ngFor='let req of requests'>
+                <mat-card>
+                    {{req.owner}} |
+                    {{req.price}} | 
+                    {{req.address}} |
+                    <span class="example-button-row">
+                        <button mat-raised-button (click)='accept(req._id)' color="primary">Accept</button>
+                    </span>
+                </mat-card>
+                <br/>
+            </div>
         </div>
-    </div>
 
-    <ng-template #noReqs>
-        <span>
-           No reqs
-        </span>
-    </ng-template>
-  
-
-    <app-new-re></app-new-re>
-
-    <h2>All real estates</h2>
-    <div *ngIf='all.length != 0; else noRe'>
-        <div *ngFor='let re of all'>
-            <mat-card *ngIf='re.accepted == 1'>
-                {{re.owner}} |
-                {{re.price}} |
-                {{re.address}} |
-                promoted: {{re.promoted}}
-                <button (click)='promote(re._id)'>Promote</button>
-                <button (click)='unpromote(re._id)'>Unpromote</button>
-            </mat-card>
-            <br/>
-        </div>
-    </div>
-
-    <ng-template #noRe>
-        <span>
-           No real estates
-        </span>
-    </ng-template>
-
-
-    <div id='houseFlatChart'></div>
-
-    <div id='cityChart'></div>
+        <ng-template #noReqs>
+            <span>
+            No reqs
+            </span>
+        </ng-template>
     
-    <div id='sellRange'></div>
+    
+    
+        <div class='chart' id='houseFlatChart'></div>
+
+        <div class='chart'  id='cityChart'></div>
+
+        <div class='chart'  id='sellRange'></div>
+    </div>
+
+  
 </div>
