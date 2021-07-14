@@ -1,19 +1,19 @@
-import { Component, Input, OnInit, Renderer2 } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RealEstate } from '../model/realestateModel';
 import { User } from '../model/userModel';
 
 @Component({
-  selector: 'app-re-card',
-  templateUrl: './re-card.component.html',
-  styleUrls: ['./re-card.component.css']
+  selector: 'app-promoted-card',
+  templateUrl: './promoted-card.component.html',
+  styleUrls: ['./promoted-card.component.css']
 })
-export class ReCardComponent implements OnInit {
+export class PromotedCardComponent implements OnInit {
 
   @Input() re: RealEstate;
   user : User;
 
-  constructor(private router: Router, private renderer: Renderer2) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('user'));
@@ -25,5 +25,5 @@ export class ReCardComponent implements OnInit {
     this.router.navigate(['/re_page']);
   }
 
-  
+
 }

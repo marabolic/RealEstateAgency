@@ -42,7 +42,7 @@ export class NewReComponent implements OnInit {
     }
     this.reService.addNewRealEstate(this.region, this.city, this.price, this.house_flat,this.rooms,
        this.area, this.sell_rent,"no", this.description, this.address, this.floor, this.total_floors, this.furnished,
-       username, "no", [], accepted).subscribe((ob)=>{
+       username, "no", [], [], accepted).subscribe((ob)=>{
         if(ob['realestate']=='ok'){
           alert('Realestate added');
         }

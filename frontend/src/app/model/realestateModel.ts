@@ -15,5 +15,16 @@ export class RealEstate{
     total_floors: number;
     furnished: string;
     owner: string;
+    sold: string;
+    rented: {
+        datefrom: Date;
+        dateto: Date;
+    }[];
+    offers: {
+        username: string; 
+        price: number;
+        datefrom: Date;
+        dateto: Date;
+    }[];
     accepted: number;
 }

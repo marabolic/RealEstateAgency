@@ -52,7 +52,19 @@ let RealEstate = new Schema({
         type: String
     },
     rented:{
-        type: Array
+        type: [{
+            datefrom: Date,
+            dateto: Date
+        }]
+    },
+    offers: {
+        type: [{
+            username: String,
+            price: Number,
+            datefrom: Date,
+            dateto: Date,
+            isRent: Boolean
+        }]
     },
     accepted:{
         type: Number

@@ -8,8 +8,11 @@ import { LogoutComponent } from './logout/logout.component';
 import { NewReComponent } from './new-re/new-re.component';
 import { PasswordChangeComponent } from './password-change/password-change.component';
 import { ProfileComponent } from './profile/profile.component';
+import { PromotedComponent } from './promoted/promoted.component';
 import { RePageComponent } from './re-page/re-page.component';
 import { RegisterComponent } from './register/register.component';
+import { ResForUserComponent } from './res-for-user/res-for-user.component';
+import { UserModifyComponent } from './user-modify/user-modify.component';
 import { UserComponent } from './user/user.component';
 
 
@@ -20,7 +23,11 @@ const routes: Routes = [
   {path: "logout", component: LogoutComponent},
   {path: "re_page", component: RePageComponent},
   {path: "profile", component: ProfileComponent},
-  {path: "profile/passChange", component: PasswordChangeComponent}
+  {path: "profile/passChange", component: PasswordChangeComponent},
+  {path: "new-re", component: NewReComponent},
+  {path: "user-modify", component: UserModifyComponent},
+  {path: "my-real-estates", component: ResForUserComponent},
+  {path: "promote", component: PromotedComponent}
 ];
 
 @NgModule({

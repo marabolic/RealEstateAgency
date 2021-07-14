@@ -1,45 +1,89 @@
-<div>
-    <p>Hello Admin</p>
+<div *ngIf='user && user.type == 0'>
+    <h2>Hello Admin</h2>
 
 
-    <div *ngIf='requests.length != 0; else noReqs'>
-        <div *ngFor='let req of requests'>
+    <br/>
+    <br/>
+    <h3>Registration requests</h3>
+    <div *ngIf='usrrequests.length != 0; else noRegReqs'>
+        <div *ngFor='let req of usrrequests'>
             <mat-card>
-                {{req.username}}
-                {{req.email}}
-                <button (click)='accept(req.username)'>Accept</button>
-                <button (click)='reject(req.username)'>Reject</button>
+                {{req.username}} |
+                {{req.email}} |
+                <span class="example-button-row">
+                    <button mat-raised-button (click)='accept(req.username)' color="secondary">Accept</button>
+                </span> 
+                <span>&nbsp;</span>
+                <span class="example-button-row">
+                    <button mat-raised-button (click)='reject(req.username)' color="primary">Reject</button>
+                </span>
             </mat-card>
             <br/>
         </div>
     </div>
 
-    <ng-template #noReqs>
+    <ng-template #noRegReqs>
         <span>
-           No reqs
+           No user reqs
         </span>
     </ng-template>
 
-    <br/>
-    <hr/>
-    <br/>
-    <app-register></app-register>
 
     <br/>
     <hr/>
     <br/>
-    All users
+    <h3>All users</h3>
     <div *ngIf='all.length != 0; else noUsers'>
         <div *ngFor='let usr of all'>
-            <mat-card>
-                {{usr.username}}
-                {{usr.email}}
-                <button (click)='update(usr.username)'>Update</button>
-                <button (click)='delete(usr.username)'>Delete</button>
+            <mat-card *ngIf='usr.accepted == 1'>
+                {{usr.username}} |
+                {{usr.email}} |
+                <span class="example-button-row">
+                    <button mat-raised-button (click)='update(usr.username)' color="secondary">Update</button>
+                </span> 
+                <span>&nbsp;</span>
+                <span class="example-button-row">
+                    <button mat-raised-button (click)='delete(usr.username)' color="primary">Delete</button>
+                </span>
+            </mat-card>
+            <mat-card *ngIf='usr.accepted == -1' class='deletedAcc'>
+                {{usr.username}} |
+                {{usr.email}} |
+                <span class="example-button-row">
+                    <button mat-raised-button (click)='remove(usr.username)' color="secondary">Remove</button>
+                </span> 
+                <span>&nbsp;</span>
             </mat-card>
             <br/>
         </div>
     </div>
 
+    <ng-template #noUsers>
+        No users
+    </ng-template>
+
   
+    <br/>
+    <hr/>
+    <br/>
+    <h3>Real estate requests</h3>
+    <div *ngIf='rerequests.length != 0; else noReReqs'>
+        <div *ngFor='let req of rerequests'>
+            <mat-card>
+                {{req.owner}} |
+                {{req.price}} | 
+                {{req.address}} |
+                <span class="example-button-row">
+                    <button mat-raised-button (click)='accept(req._id)' color="primary">Accept</button>
+                </span>
+            </mat-card>
+            <br/>
+        </div>
+    </div>
+
+    <ng-template #noReReqs>
+        <span>
+           No re reqs
+        </span>
+    </ng-template>
 </div>

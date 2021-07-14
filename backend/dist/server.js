@@ -236,6 +236,55 @@ router.route('/buy').post((req, res) => {
         }
     });
 });
+router.route('/giveOfferRent').post((req, res) => {
+    let id = req.body.id;
+    let price = req.body.price;
+    let username = req.body.username;
+    let datefrom = req.body.datefrom;
+    let dateto = req.body.dateto;
+    user_1.default.findOne({ '_id': id }, (err, user) => {
+        if (err)
+            console.log(err);
+        else {
+            if (user) {
+                user.collection.updateOne({ '_id': id }, { $push: { 'offers': { 'username': username,
+                            'price': price,
+                            'datefrom': datefrom,
+                            'dateto': dateto } } });
+                res.json({ "message": "ok" });
+            }
+            else {
+                res.json({ "message": "user does not exist" });
+            }
+        }
+    });
+});
+router.route('/giveOfferBuy').post((req, res) => {
+    let id = req.body.id;
+    let price = req.body.price;
+    let username = req.body.username;
+    realestate_1.default.findById(id, (err, u) => {
+        if (err)
+            console.log(err);
+        else {
+            if (u) {
+                //realestate.collection.updateOne({'_id': id}, 
+                //{$push: {'offers' : {'username': username, 
+                //                    'price': price}}});
+                u.offers.push({ 'username': username, 'price': price, 'datefrom': "", 'dateto': "" });
+                console.log(u);
+                u.save().then(() => {
+                    res.json({ "message": "ok" });
+                }).catch((er) => {
+                    res.json({ "message": "error" });
+                });
+            }
+            else {
+                res.json({ "message": "user does not exist" });
+            }
+        }
+    });
+});
 router.route('/newRe').post((req, res) => {
     //console.log(req.body);
     let u = new realestate_1.default(req.body);

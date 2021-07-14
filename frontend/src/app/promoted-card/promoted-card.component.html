@@ -1,0 +1,37 @@
+<div>
+    <mat-card class='card' >
+      
+        <carousel  [cellWidth]="'100%'"  [objectFit]="'cover'" [autoplay]="true" [dots]="true">
+
+            <div *ngFor='let img of re.photos' class="carousel-cell">
+                <img src="{{'../../assets/'+img}}">
+            </div>
+                
+        </carousel>
+
+        <div class='info'>
+            Description: {{re.description}}
+            <br/>
+            Price: {{re.price}}
+            <br/>
+            City: {{re.city}}
+            <br/>
+            Region: {{re.region}}
+            <br/>
+            House/Flat: {{re.house_flat}}
+            <br/>
+            Area: {{re.area}}
+            <br/>
+            Sell/Rent: {{re.sell_rent}}
+           
+        </div>
+
+        <div class='btn' *ngIf='user != null'>
+            <button mat-raised-button (click)="showPage()" color="primary">Page</button>
+        </div>
+       
+        
+        
+       
+    </mat-card>
+</div>

@@ -25,6 +25,12 @@ import { NewReComponent } from './new-re/new-re.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PasswordChangeComponent } from './password-change/password-change.component';
 import { ResForUserComponent } from './res-for-user/res-for-user.component';
+import { UserModifyComponent } from './user-modify/user-modify.component';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { PromotedCardComponent } from './promoted-card/promoted-card.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -47,6 +53,8 @@ import { ResForUserComponent } from './res-for-user/res-for-user.component';
     ProfileComponent,
     PasswordChangeComponent,
     ResForUserComponent,
+    UserModifyComponent,
+    PromotedCardComponent,
 
   ],
   imports: [
@@ -55,7 +63,8 @@ import { ResForUserComponent } from './res-for-user/res-for-user.component';
     NoopAnimationsModule,
     MaterialModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    IvyCarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]

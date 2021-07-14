@@ -1,14 +1,15 @@
 <div>
     <br/>
-    <hr/>
     <br/>
-    My real estates
+    <h2>My real estates</h2>
     <div *ngIf='myrealestates.length != 0; else noRes'>
         <div *ngFor='let re of myrealestates'>
             <mat-card>
-                {{re.price}}
-                {{re.address}}
-                <button (click)='change(re._id)'>Change</button>
+                {{re.price}} |
+                {{re.address}} |
+                <span class="example-button-row">
+                    <button type="submit" mat-raised-button (click)='change(re._id)' color="primary">Change</button>
+                </span>
             </mat-card>
             <br/>
         </div>

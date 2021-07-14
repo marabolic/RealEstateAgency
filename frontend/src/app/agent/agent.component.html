@@ -1,14 +1,16 @@
-<div>
+<div *ngIf='user && user.type == 1'>
     <p>Hello {{user.username}}</p>
 
     <h2>Not accepted</h2>
     <div *ngIf='requests.length != 0; else noReqs'>
         <div *ngFor='let req of requests'>
             <mat-card>
-                {{req.owner}}
-                {{req.price}}
-                {{req.address}}
-                <button (click)='accept(req._id)'>Accept</button>
+                {{req.owner}} |
+                {{req.price}} | 
+                {{req.address}} |
+                <span class="example-button-row">
+                    <button mat-raised-button (click)='accept(req._id)' color="primary">Accept</button>
+                </span>
             </mat-card>
             <br/>
         </div>
@@ -44,4 +46,10 @@
         </span>
     </ng-template>
 
+
+    <div id='houseFlatChart'></div>
+
+    <div id='cityChart'></div>
+    
+    <div id='sellRange'></div>
 </div>

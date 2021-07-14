@@ -119,8 +119,29 @@ export class RealestatesService {
     return this.http.get(`${this.uri}/rent`);
   }
 
+
+  giveOfferBuy(id, username, price){
+    const data = {
+      id : id,
+      username: username,
+      price: price
+    }
+    console.log(data);
+    return this.http.post(`${this.uri}/giveOfferBuy`, data);
+  }
+
+  giveOfferRent(id, price, datefrom, dateto){
+    const data = {
+      id : id,
+      price: price,
+      datefrom: datefrom,
+      dateto: dateto
+    }
+    return this.http.post(`${this.uri}/giveOfferRent`, data);
+  }
+
   addNewRealEstate(region, city, price, house_flat, rooms, area, sell_rent, promoted, description, 
-              address, floor, total_floors, furnished, owner, sold, rented, accepted){
+              address, floor, total_floors, furnished, owner, sold, rented, offers ,accepted){
 
     const data = {
       region : region,
@@ -139,6 +160,7 @@ export class RealestatesService {
       owner: owner,
       sold:sold,
       rented:rented,
+      offers: offers,
       accepted: accepted
     }
 

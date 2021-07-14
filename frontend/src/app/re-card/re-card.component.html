@@ -1,5 +1,12 @@
 <div>
     <mat-card class='card' >
+      
+        
+        <img src="{{'../../assets/'+re.photos[0]}}">
+        <br/>
+
+        <div class='info'>
+
         Description: {{re.description}}
         <br/>
         Price: {{re.price}}
@@ -25,8 +32,10 @@
         Owner: {{re.owner}}
 
         <br/>
+
         
-        <div *ngIf='user != null'>
+        </div>
+        <div class='btn'  *ngIf='user != null'>
             <button mat-raised-button (click)="showPage()" color="primary">Page</button>
         </div>
        

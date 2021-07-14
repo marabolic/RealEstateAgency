@@ -28,4 +28,27 @@ export class HeaderComponent implements OnInit {
 
   }
 
+  goHome(){
+    this.router.navigate(['/']);
+  }
+
+  addRealEstate(){
+    this.router.navigate(['new-re']);
+  }
+
+  addUser(){
+    this.router.navigate(['register']);
+  }
+
+  myProfile(){
+    this.router.navigate(['profile']);
+  }
+
+  myRealEstates(){
+    this.router.navigate(['my-real-estates']);
+  }
+
+  promote(){
+    this.router.navigate(['promote']);
+  }
 }

@@ -18,3 +18,11 @@ img{
     display: flex;
     justify-content: center;
 }
+
+carousel{
+    width: 250px;
+}
+
+carousel-cell{
+    width: 250px;
+}

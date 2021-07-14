@@ -1,47 +1,87 @@
 <div>
 
     <mat-card class='card'>
-        <table>
+        <carousel [cellWidth]="'100%'" [objectFit]="'cover'" [autoplay]="true" [dots]="true">
+            <div *ngFor='let img of estate.photos' class="carousel-cell">
+                <img [src]="'../../assets/'+img">
+            </div>
+        </carousel>
+        <table class='info'>
+            
             <tr>
+                <td>&nbsp;</td>
                 <td>Price: </td>
                 <td>{{estate.price}}$</td>
+                <td>&nbsp;</td> 
+                
             </tr>
             <tr>
+                <td>&nbsp;</td>
                 <td>Region: </td>
                 <td>{{estate.region}}</td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
+                <td>&nbsp;</td>
                 <td>City: </td>
                 <td>{{estate.city}}</td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
+                <td>&nbsp;</td>
                 <td>House/Flat: </td>
                 <td>{{estate.house_flat}}</td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
+                <td>&nbsp;</td>
                 <td>Rooms: </td>
                 <td>{{estate.rooms}}</td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
+                <td>&nbsp;</td>
                 <td>Area: </td>
                 <td>{{estate.area}}</td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
+                <td>&nbsp;</td>
                 <td>Rent/Sale: </td>
                 <td>{{estate.sell_rent}}</td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
+                <td>&nbsp;</td>
+                <td>Furnished: </td>
+                <td>{{estate.furnished}}</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
                 <td>Description: </td>
                 <td>{{estate.description}}</td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
+                <td>&nbsp;</td>
                 <td>Floor: </td>
                 <td>{{estate.floor}}</td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
+                <td>&nbsp;</td>
                 <td>Total floors: </td>
                 <td>{{estate.total_floors}}</td>
+                <td>&nbsp;</td>
             </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>Owner: </td>
+                <td>{{estate.owner}}</td>
+                <td>&nbsp;</td>
+            </tr>
+
         </table>
     </mat-card>
 
@@ -52,6 +92,10 @@
             <br/>
             <b>Rent</b>
             <br/>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Price</mat-label>
+                <input required type='number' matInput [(ngModel)]='newprice' name='newprice'>
+            </mat-form-field>
             <br/>
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Date from </mat-label>
@@ -73,13 +117,18 @@
 
     <ng-template #sell>
         <br/>
-        <b>Sell</b>
+        <b>Buy</b>
         <br/>
         <br/>
         <span>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Price</mat-label>
+                <input required type='number' matInput [(ngModel)]='newprice' name='newprice'>
+            </mat-form-field>
+            <br/>
             <mat-form-field appearance="fill">
                 <mat-label>Method of payment</mat-label>
-                <mat-select [(value)]="selected">
+                <mat-select required [(value)]="selected">
                     <mat-option value="cash">Cash</mat-option>
                     <mat-option value="credit">Credit</mat-option>
                 </mat-select>
