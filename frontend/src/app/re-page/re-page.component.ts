@@ -17,10 +17,11 @@ export class RePageComponent implements OnInit {
   selected: string;
 
   newprice: number;
-  datefrom: Date;
-  dateto: Date;
+  datefrom: string;
+  dateto: string;
   loaded = false;
   user : User;
+  dateError:string;
   constructor(private realestateService: RealestatesService) { }
 
   ngOnInit(): void {
@@ -44,16 +45,36 @@ export class RePageComponent implements OnInit {
   }
 
   rent(id){
-    if(this.datefrom.getDate() > this.dateto.getDate()){
+    if(new Date(this.datefrom).getTime() > new Date(this.dateto).getTime()){
       alert("Dates not correct");
       return;
     }
 
+    let flag = 0;
     this.estate.rented.forEach((re)=>{
-        if (re.dateto.getDate() < this.datefrom.getDate() || re.datefrom.getDate() > this.dateto.getDate()){
-          alert("helo");
+        if (!(new Date(re.dateto).getTime() < new Date(this.datefrom).getTime() || 
+        new Date(re.datefrom).getTime() > new Date(this.dateto).getTime())){
+          flag = 1;
+          return;
         } 
     })
+    if (flag){
+      this.dateError = "Occupied";
+      return;
+    }
+    
+    this.dateError = "";
+
+    this.realestateService.giveOfferRent(this.user.username, this.estate._id, this.newprice, 
+      new Date(this.datefrom), new Date(this.dateto)).subscribe((ob)=>{
+        if (ob['message']=='ok'){
+          this.newprice = undefined;
+          this.datefrom = undefined;
+          this.dateto = undefined;
+        }
+      })
+
+
 
   
   }

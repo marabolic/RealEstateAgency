@@ -99,13 +99,15 @@
             <br/>
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Date from </mat-label>
-                <input matInput type='date' name="datefrom">    
+                <input matInput type='date' [(ngModel)]='datefrom' name="datefrom">  
+                <mat-hint>{{dateError}}</mat-hint>  
             </mat-form-field>
 
             <br/>
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Date to</mat-label>
-                <input matInput type='date' name="datefrom">
+                <input matInput type='date' [(ngModel)]='dateto' name="datefrom">
+                <mat-hint>{{dateError}}</mat-hint>
             </mat-form-field>
 
             <br/>

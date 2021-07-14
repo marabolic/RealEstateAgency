@@ -134,17 +134,42 @@ export class AgentComponent implements OnInit, AfterViewInit{
   user: User;
   requests: RealEstate[];
   all: RealEstate[];
+  offers: RealEstate[];
 
   ngOnInit(): void {
     this.requests = [];
     this.all = [];
+    this.offers = [];
     this.user = JSON.parse(localStorage.getItem("user"));
     this.reService.getAllRequests().subscribe((data:RealEstate[])=>{
       this.requests = data;
     });
     this.reService.getAllRealestates().subscribe((data:RealEstate[])=>{
       this.all = data;
+      
+      this.all.forEach((re)=>{
+        if (re.owner == 'agency'){
+          this.offers.push(re);
+        }
+      })
     });
+
+    
+  }
+
+
+  acceptOffer(id){
+    let x = this.offers.findIndex(re=>
+      re._id == id
+    );
+
+    if(x >= 0){
+      console.log("tu");
+      this.reService.acceptOffer(x, id).subscribe((ob)=>{
+        this.offers.splice(x);
+      });
+    }
+
   }
 
   accept(id){

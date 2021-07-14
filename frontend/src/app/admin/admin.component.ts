@@ -177,8 +177,8 @@ export class AdminComponent implements OnInit, AfterViewInit {
     })
   }
 
-  update(){
-      this.router.navigate(['user-modify']);
+  update(username){
+      this.router.navigate(['user-modify', username ]);
   }
 
   delete(username){

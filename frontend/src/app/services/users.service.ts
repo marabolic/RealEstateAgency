@@ -62,6 +62,13 @@ export class UsersService {
     return this.http.get(`${this.uri}/allusers`);
   }
 
+  getUser(username){
+    const data ={
+      username:username
+    }
+    return this.http.post(`${this.uri}/getUser`, data);
+  }
+
   updateReqest(username, status){
     const data = {
       username: username,
@@ -70,6 +77,13 @@ export class UsersService {
     return this.http.post(`${this.uri}/updateUserRequest`, data);
   }
 
+  editUser(username, user){
+    const data = {
+      username: username,
+      user: user
+    }
+    return this.http.post(`${this.uri}/editUser`, data);
+  }
 
   changePassword(username, password){
     const data = {

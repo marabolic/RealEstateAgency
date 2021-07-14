@@ -130,8 +130,9 @@ export class RealestatesService {
     return this.http.post(`${this.uri}/giveOfferBuy`, data);
   }
 
-  giveOfferRent(id, price, datefrom, dateto){
+  giveOfferRent(username, id, price, datefrom, dateto){
     const data = {
+      username: username,
       id : id,
       price: price,
       datefrom: datefrom,
@@ -181,6 +182,14 @@ export class RealestatesService {
       id : id
     }
     return this.http.post(`${this.uri}/updateRealestateRequest`, data);
+  }
+
+  acceptOffer(x, id){
+    const data = {
+      x: x,
+      id : id
+    }
+    return this.http.post(`${this.uri}/acceptOffer`, data);
   }
 
   getRealEstateByUsername(username){

@@ -26,7 +26,7 @@ const routes: Routes = [
   {path: "profile", component: ProfileComponent},
   {path: "profile/passChange", component: PasswordChangeComponent},
   {path: "new-re", component: NewReComponent},
-  {path: "user-modify", component: UserModifyComponent},
+  {path: "user-modify/:username", component: UserModifyComponent},
   {path: "my-real-estates", component: ResForUserComponent},
   {path: "all-re", component: AllReComponent}
 ];

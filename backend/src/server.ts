@@ -132,6 +132,8 @@ router.route('/regrequest').get((req, res)=>{
 });
 
 
+
+
 router.route('/realestateRequest').get((req, res)=>{
     realestate.find({'accepted' : 1}, (err, re)=>{
         if (err) console.log(err);
@@ -248,18 +250,46 @@ router.route('/giveOfferRent').post((req, res)=>{
     let datefrom = req.body.datefrom;
     let dateto = req.body.dateto;
 
-    user.findOne({'_id': id}, (err, user)=>{
+    realestate.findById(id, (err, u:any)=>{
         if (err) console.log(err);
         else{
-            if (user){
-                user.collection.updateOne({'_id': id}, 
-                {$push: {'offers' : {'username': username, 
-                                    'price': price,
-                                    'datefrom': datefrom,
-                                    'dateto': dateto }}});
-                res.json({"message" : "ok"});
+            if (u){
+                u.offers.push({'username': username, 'price': price, 'datefrom' :datefrom, 'dateto': dateto});
+                console.log(u);
+                u.save().then(()=>{
+                    res.json({"message" : "ok"});
+                }).catch((er:any)=>{
+                    res.json({"message" : "error"});
+                })
             }
             else{
+                res.json({"message" : "user does not exist"});
+            }
+        }
+    })
+
+})
+
+router.route('/acceptOffer').post((req, res)=>{
+    let id = req.body.id;
+    let x = req.body.x;
+    console.log(1);
+    realestate.findById(id, (err, u:any)=>{
+        if (err) console.log(err);
+        else{
+            console.log(2);
+            if (u){
+                u.rented.push({'datefrom' :u.offers[x].datefrom, 'dateto': u.offers[x].dateto});
+                u.offers.splice(x);
+                console.log(u);
+                u.save().then(()=>{
+                    res.json({"message" : "ok"});
+                }).catch((er:any)=>{
+                    res.json({"message" : "error"});
+                })
+            }
+            else{
+                console.log(3);
                 res.json({"message" : "user does not exist"});
             }
         }
@@ -348,6 +378,42 @@ router.route("/getAllRealestates").get((req, res)=>{
     realestate.find({},(err, re)=>{
         if (err) console.log(err);
         else res.json(re);
+    })
+});
+
+router.route('/editUser').post((req, res)=>{
+    let username = req.body.username;
+    let u = req.body.user;
+
+    user.findOne({'username':username}, (err, usr:any)=>{
+        if (err) console.log(err);
+        else {
+            usr.firstname = u.firstname;
+            usr.lastname = u.lastname;
+            usr.city = u.city;
+            usr.country = u.country;
+            usr.email = u.email;
+            usr.avatar = u.avatar;
+
+            usr.save().then(()=>{
+                res.json({"message" : "ok"});
+            }).catch((er:any)=>{
+                res.json({"message" : "not ok"});
+            })
+        }
+    })
+});
+
+
+
+router.route("/getUser").post((req, res)=>{
+    let username = req.body.username;
+
+    user.findOne({'username':username}, (err, usr)=>{
+        if (err) console.log(err);
+        else {
+            res.json(usr);
+        }
     })
 });
 

@@ -1,1 +1,56 @@
-<p>user-modify works!</p>
+
+
+<div>
+   
+    <form class="example-form">
+        <table>
+            <br/>
+            <b>Register</b>
+            <br/>
+            <br/>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Name</mat-label>
+                <input required matInput [(ngModel)]='firstname' name='firstname' value='Jerry' placeholder="Ex. Jerry">
+            </mat-form-field>
+        
+    
+        
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Surname</mat-label>
+                <input required matInput [(ngModel)]='lastname' name='lastname' placeholder="Ex. Smith">
+            </mat-form-field>
+    
+        
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Email</mat-label>
+                <input  required matInput [(ngModel)]='email' name='email' placeholder="Ex. jerry@jerrymail.com">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>City</mat-label>
+                <input required  matInput [(ngModel)]='city' name='city'>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Country</mat-label>
+                <input required  matInput [(ngModel)]='country' name='country'>
+            </mat-form-field>
+
+    
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label class='uploadimg'>Avatar </mat-label>
+                <input matInput disabled>
+                <input type="file" name="avatar" (change)="onFileSelected($event)" accept="image/png, image/jpeg">
+            </mat-form-field>
+            
+
+            <div class="example-button-row">
+                <button mat-raised-button (click)='change()' color="primary">Change</button>
+            </div>
+
+        </table>
+    </form>
+
+</div>
