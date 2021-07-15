@@ -280,7 +280,9 @@ router.route('/acceptOffer').post((req, res)=>{
             console.log(2);
             if (u){
                 u.rented.push({'datefrom' :u.offers[x].datefrom, 'dateto': u.offers[x].dateto});
-                u.offers.splice(x);
+                console.log("pre " + u.offers);
+                u.offers.splice(x, 1);
+                console.log("posle " + u.offers);
                 console.log(u);
                 u.save().then(()=>{
                     res.json({"message" : "ok"});

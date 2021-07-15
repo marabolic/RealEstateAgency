@@ -27,14 +27,14 @@
 
         <div *ngIf='offers.length != 0'>
             <div *ngFor='let req of offers'>
-                <div *ngFor='let o of req.offers'>
+                <div *ngFor='let o of req.offers; let i=index;'>
                     <mat-card>
                         {{o.username}} |
                         {{o.price}} | 
                         {{o.datefrom}} |
                         {{o.dateto}}
                         <span class="example-button-row">
-                            <button mat-raised-button (click)='acceptOffer(req._id)' color="primary">Accept</button>
+                            <button mat-raised-button (click)='acceptOffer(req._id, i)' color="primary">Accept</button>
                         </span>
                     </mat-card>
                 </div>

@@ -153,22 +153,17 @@ export class AgentComponent implements OnInit, AfterViewInit{
         }
       })
     });
-
-    
   }
 
 
-  acceptOffer(id){
-    let x = this.offers.findIndex(re=>
-      re._id == id
-    );
-
-    if(x >= 0){
-      console.log("tu");
-      this.reService.acceptOffer(x, id).subscribe((ob)=>{
-        this.offers.splice(x);
-      });
-    }
+  acceptOffer(id, i){
+    let re = this.offers.find((e)=>e._id == id);
+    console.log("tu");
+    this.reService.acceptOffer(i, id).subscribe((ob)=>{
+      re.offers.splice(i, 1);
+      console.log("posle " + this.offers);
+    });
+    
 
   }
 
