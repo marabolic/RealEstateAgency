@@ -24,11 +24,14 @@
             </span>
         </ng-template>
 
+        <hr/>
 
+        <h2>Offers</h2>
         <div *ngIf='offers.length != 0'>
             <div *ngFor='let req of offers'>
                 <div *ngFor='let o of req.offers; let i=index;'>
                     <mat-card>
+                        {{req.address}} |
                         {{o.username}} |
                         {{o.price}} | 
                         {{o.datefrom}} |
@@ -43,7 +46,8 @@
             </div>
         </div>
     
-    
+        <hr/>
+        <h2>Charts</h2>
     
         <div class='chart' id='houseFlatChart'></div>
 

@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
   type: string;
 
   avatar :any;
-
+  messagePass:string;
   message : string;
 
   register(){
@@ -47,6 +47,16 @@ export class RegisterComponent implements OnInit {
         return;
       }
 
+      var regularExpression = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,24}$/;
+      if(!regularExpression.test(this.password)) {
+        this.messagePass = "Password should contain atleast one number and one special character";
+        return;
+      }
+
+      if (this.password != this.rep_password){
+        this.message = "Passwords don't match";
+        return;
+      }
     
     this.userService.getAllUsers().subscribe((users:User[])=>{
       let found = 0;

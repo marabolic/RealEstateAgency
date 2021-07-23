@@ -135,7 +135,7 @@ router.route('/regrequest').get((req, res)=>{
 
 
 router.route('/realestateRequest').get((req, res)=>{
-    realestate.find({'accepted' : 1}, (err, re)=>{
+    realestate.find({'accepted' : 0}, (err, re)=>{
         if (err) console.log(err);
         else res.json(re);
     })

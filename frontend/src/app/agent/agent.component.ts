@@ -18,7 +18,7 @@ export class AgentComponent implements OnInit, AfterViewInit{
       let rentHouse= 0, rentFlat = 0, sellHouse = 0, sellFlat =0;
       let cityNames = {};
       let cheapSell = 0, normalSell = 0, expensiveSell = 0,
-        cheapRent = 0, normalRent= 0, expensiveRent  =0;
+        cheapRent = 0, normalRent= 0, expensiveRent  = 0;
       let countReForCity = [];
         res.forEach((r:RealEstate)=>{
           if(r.house_flat == 'house' && r.sell_rent == 'sell')
@@ -171,6 +171,7 @@ export class AgentComponent implements OnInit, AfterViewInit{
     this.reService.acceptRealEstate(id).subscribe((resp)=>{
       if (resp['message']=='ok'){
         this.reService.getAllRequests().subscribe((data:RealEstate[])=>{
+          console.log("tu sam jaaa");
           this.requests = data;
         });
       }

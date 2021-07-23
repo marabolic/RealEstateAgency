@@ -80,13 +80,15 @@
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label class='uploadimg'>Pictures </mat-label>
                 <input matInput disabled>
-                <input type="file" name="pictures" accept="image/png, image/jpeg">
+                <input type="file" name="photos" (change)="onFileSelected($event)" accept="image/png, image/jpeg">
             </mat-form-field>
             
 
             <div class="example-button-row">
                 <button type="submit" mat-raised-button (click)='publish()' color="primary">Publish</button>
             </div>
+
+            {{message}}
             
         </table>
     </form>

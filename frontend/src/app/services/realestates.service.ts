@@ -141,10 +141,11 @@ export class RealestatesService {
     return this.http.post(`${this.uri}/giveOfferRent`, data);
   }
 
-  addNewRealEstate(region, city, price, house_flat, rooms, area, sell_rent, promoted, description, 
+  addNewRealEstate(photos, region, city, price, house_flat, rooms, area, sell_rent, promoted, description, 
               address, floor, total_floors, furnished, owner, sold, rented, offers ,accepted){
 
     const data = {
+      photos: photos,
       region : region,
       city : city,
       price : price,

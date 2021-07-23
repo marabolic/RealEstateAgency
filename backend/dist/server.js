@@ -131,7 +131,7 @@ router.route('/regrequest').get((req, res) => {
     });
 });
 router.route('/realestateRequest').get((req, res) => {
-    realestate_1.default.find({ 'accepted': 1 }, (err, re) => {
+    realestate_1.default.find({ 'accepted': 0 }, (err, re) => {
         if (err)
             console.log(err);
         else
